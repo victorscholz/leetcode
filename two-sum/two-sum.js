@@ -4,13 +4,19 @@
  * @return {number[]}
  */
 const twoSum = function(nums, target) {
-  const collection = {};
-  for(let i = 0; i < nums.length; i++){
-    if(collection[nums[i]] >= 0){
-      return [collection[nums[i]], i]
+  const store = {}
+  
+  for (let i = 0; i < nums.length; i++) {
+    const base = nums[i];
+    const diff = target - base;
+    
+    if (store.hasOwnProperty(diff)) {
+      return [store[diff], i];
+    } else {
+      store[nums[i]] = i
     }
-    collection[target - nums[i]] = i
   }
+  
 };
 ​
 ​
